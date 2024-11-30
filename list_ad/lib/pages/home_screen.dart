@@ -138,92 +138,93 @@ class _HomeScreenState extends State<HomeScreen> {
               color: const Color.fromARGB(255, 73, 73, 73),
               child: Padding(
                 padding: EdgeInsets.all(16),
-                child: Row(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //Imagem do produto ou icon se não tiver img
-                    ads.image != null
-                        ? ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.file(
+                    // Imagem do produto ou ícone se não houver imagem
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: ads.image != null
+                          ? Image.file(
                               ads.image!,
-                              width: 120,
-                              height: 66,
+                              width: double
+                                  .infinity, // Ocupar toda a largura disponível
+                              height: 200, // Ajustar para manter proporção 16:9
                               fit: BoxFit.cover,
+                            )
+                          : const SizedBox(
+                              width: double.infinity,
+                              height: 200,
+                              child: Icon(
+                                Icons.no_photography,
+                                color: Colors.grey,
+                              ),
                             ),
-                          )
-                        : const SizedBox(
-                            width: 120,
-                            height: 66,
-                            child: Icon(Icons.no_photography),
-                          ),
-                    SizedBox(width: 16),
-                    // Informações do produto
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Título do produto
-                          Text(
-                            _lista[position].titulo,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: ads.done ? Colors.white : Colors.grey,
-                              decoration: ads.done
-                                  ? TextDecoration.none
-                                  : TextDecoration.lineThrough,
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          SizedBox(height: 8),
-                          // Preço e visitas
-                          Text(
-                            "250",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.green,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          //Descrição
-                          Text(
-                            _lista[position].texto,
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: ads.done
-                                  ? const Color.fromARGB(255, 179, 179, 179)
-                                  : Colors.grey,
-                              decoration: ads.done
-                                  ? TextDecoration.none
-                                  : TextDecoration.lineThrough,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          // Tipo de frete
-                          const Text(
-                            "Frete Gratis",
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.blue,
-                            ),
-                          ),
-                        ],
+                    ),
+                    SizedBox(height: 16),
+                    // Nome do produto
+                    Text(
+                      _lista[position].titulo,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: ads.done ? Colors.white : Colors.grey,
+                        decoration: ads.done
+                            ? TextDecoration.none
+                            : TextDecoration.lineThrough,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(height: 8),
+
+                    // Descrição
+                    Text(
+                      _lista[position].texto,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: ads.done
+                            ? const Color.fromARGB(255, 179, 179, 179)
+                            : Colors.grey,
+                        decoration: ads.done
+                            ? TextDecoration.none
+                            : TextDecoration.lineThrough,
                       ),
                     ),
-                    // Botão de ação ok
-                    Switch(
-                      value: ads.done,
-                      activeColor: const Color.fromARGB(255, 61, 255, 109),
-                      onChanged: (bool value) {
-                        setState(() {
-                          ads.done = !ads.done;
-                        }); // Adicionar lógica de ativar/desativar anúncio
-                      },
+
+                    SizedBox(height: 4),
+                    // Preço
+                    Text(
+                      "250",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(height: 4),
+                    // Tipo de frete
+                    const Text(
+                      "Frete Gratis",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    // Botão de ação (Switch)
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Switch(
+                        value: ads.done,
+                        activeColor: const Color.fromARGB(255, 61, 255, 109),
+                        onChanged: (bool value) {
+                          setState(() {
+                            ads.done = !ads.done;
+                          }); // Adicionar lógica de ativar/desativar anúncio
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
