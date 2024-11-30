@@ -57,12 +57,14 @@ class _CadastroScreen extends State<CadastroScreen> {
                     border: Border.all(width: 1, color: Colors.grey),
                     borderRadius: BorderRadius.circular(20)),
                 child: _image == null
-                    ? Icon(Icons.add_a_photo, size: 50)
+                    ? Icon(Icons.add_a_photo, size: 90)
                     : ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.file(
                           _image!,
-                          fit: BoxFit.fill,
+                          width: 200,
+                          height: 113,
+                          fit: BoxFit.cover,
                         ),
                       )),
             onTap: () async {
