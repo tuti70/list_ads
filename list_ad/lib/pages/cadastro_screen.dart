@@ -49,21 +49,22 @@ class _CadastroScreen extends State<CadastroScreen> {
         children: [
           GestureDetector(
             child: Container(
-                margin: EdgeInsets.symmetric(vertical: 20.0),
-                width: 200,
-                height: 200,
+                margin: EdgeInsets.all(20),
+                width: double.infinity, // Ocupar toda a largura disponível
+                height: 300,
                 decoration: BoxDecoration(
                     color: Colors.grey[200],
                     border: Border.all(width: 1, color: Colors.grey),
-                    borderRadius: BorderRadius.circular(20)),
+                    borderRadius: BorderRadius.circular(10)),
                 child: _image == null
                     ? Icon(Icons.add_a_photo, size: 90)
                     : ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(10),
                         child: Image.file(
                           _image!,
-                          width: 200,
-                          height: 113,
+                          width: double
+                              .infinity, // Ocupar toda a largura disponível
+                          height: 100, // Ajustar para manter proporção 16:9
                           fit: BoxFit.cover,
                         ),
                       )),
@@ -93,6 +94,7 @@ class _CadastroScreen extends State<CadastroScreen> {
                 Container(
                   padding: const EdgeInsets.fromLTRB(5, 25, 5, 2.5),
                   child: Card(
+                    margin: EdgeInsets.all(10),
                     color: const Color.fromARGB(255, 73, 73, 73),
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
@@ -124,6 +126,7 @@ class _CadastroScreen extends State<CadastroScreen> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 2.5, horizontal: 5),
                   child: Card(
+                    margin: EdgeInsets.all(10),
                     color: const Color.fromARGB(255, 73, 73, 73),
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
@@ -152,7 +155,8 @@ class _CadastroScreen extends State<CadastroScreen> {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  margin: EdgeInsets.all(10),
+                  padding: const EdgeInsets.symmetric(vertical: 6),
                   child: Row(
                     children: [
                       Expanded(
