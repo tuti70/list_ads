@@ -40,16 +40,16 @@ class Ads {
 
 // class Ads {
 //   late String titulo;
-//   late String texto;
+//   late String descricao;
 //   bool done = true;
 //   File? image;
 
-//   Ads(this.titulo, this.texto, this.image);
+//   Ads(this.titulo, this.descricao, this.image);
 
 //   Map toMap() {
 //     Map<String, dynamic> map = {
 //       'titulo': this.titulo,
-//       'texto': this.texto,
+//       'descricao': this.descricao,
 //       'done': this.done,
 //       //'imagePath': this.image == null ? '' : this.image!.path,
 //     };
@@ -57,8 +57,8 @@ class Ads {
 //   }
 
 //   Ads.fromMap(Map map) {
-//     this.texto = map['titulo'];
-//     this.texto = map['texto'];
+//     this.descricao = map['titulo'];
+//     this.descricao = map['descricao'];
 //     this.done = map['done'];
 //     //this.image = map['imagePath'] == '' ? File(map['imagePath']) : null;
 //   }

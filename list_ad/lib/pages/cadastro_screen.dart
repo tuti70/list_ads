@@ -84,14 +84,6 @@ class _CadastroScreen extends State<CadastroScreen> {
                   _image = savedImage;
                 });
               }
-              // final ImagePicker _picker = ImagePicker();
-              // final XFile? pickedFile =
-              //     await _picker.pickImage(source: ImageSource.camera);
-              // if (pickedFile != null) {
-              //   setState(() {
-              //     _image = File(pickedFile.path);
-              //   });
-              // }
             },
           ),
           Form(
@@ -105,7 +97,7 @@ class _CadastroScreen extends State<CadastroScreen> {
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
                       child: TextFormField(
-                        controller: _textController,
+                        controller: _tituloController,
                         style: const TextStyle(fontSize: 18),
                         decoration: const InputDecoration(
                           labelText: "Titulo",
@@ -136,7 +128,7 @@ class _CadastroScreen extends State<CadastroScreen> {
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
                       child: TextFormField(
-                        controller: _tituloController,
+                        controller: _textController,
                         style: const TextStyle(fontSize: 18),
                         decoration: const InputDecoration(
                           labelText: "Descrição",
@@ -175,8 +167,8 @@ class _CadastroScreen extends State<CadastroScreen> {
                               onPressed: () {
                                 FocusScope.of(context).unfocus();
                                 if (_formKey.currentState!.validate()) {
-                                  Ads newads = Ads(_textController.text,
-                                      _tituloController.text, _image);
+                                  Ads newads = Ads(_tituloController.text,
+                                      _textController.text, _image);
                                   Navigator.pop(context, newads);
                                 }
                               },
