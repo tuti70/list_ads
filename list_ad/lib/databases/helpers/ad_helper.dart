@@ -1,4 +1,4 @@
-import 'package:list_ad/database_helpers.dart';
+import 'package:list_ad/databases/helpers/database_helpers.dart';
 import 'package:list_ad/todo.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -16,7 +16,7 @@ class AdHelper {
   }
 
   //Inserção de um registro
-  Future<Ads?> saveAds(Ads ads) async {
+  Future<Ads?> save(Ads ads) async {
     Database? db = await DatabaseHelper().db;
     if (db != null) {
       ads.id = await db.insert(tableName, ads.toMap());

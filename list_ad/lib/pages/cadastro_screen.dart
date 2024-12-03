@@ -105,7 +105,7 @@ class _CadastroScreen extends State<CadastroScreen> {
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
                       child: TextFormField(
-                        controller: _tituloController,
+                        controller: _textController,
                         style: const TextStyle(fontSize: 18),
                         decoration: const InputDecoration(
                           labelText: "Titulo",
@@ -136,7 +136,7 @@ class _CadastroScreen extends State<CadastroScreen> {
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
                       child: TextFormField(
-                        controller: _textController,
+                        controller: _tituloController,
                         style: const TextStyle(fontSize: 18),
                         decoration: const InputDecoration(
                           labelText: "Descrição",

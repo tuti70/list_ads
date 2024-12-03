@@ -1,4 +1,3 @@
-import 'package:list_ad/todo.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:list_ad/databases/helpers/ad_helper.dart';
@@ -25,12 +24,12 @@ class DatabaseHelper {
     final databasePath = await getDatabasesPath();
     final path = join(databasePath, 'adDatabese.db');
 
-    try {
-      return _db = await openDatabase(path,
-          version: 2, onCreate: _onCreateDB, onUpgrade: _onUpgradeDB);
-    } catch (e) {
-      print(e);
-    }
+    // try {
+    return _db = await openDatabase(path,
+        version: 2, onCreate: _onCreateDB, onUpgrade: _onUpgradeDB);
+    // } catch (e) {
+    //   print(e);
+    // }
   }
 
   Future _onCreateDB(Database db, int newVersion) async {

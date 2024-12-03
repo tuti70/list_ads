@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   AdHelper _helper = AdHelper();
 
   @override
-  void initSate() {
+  void initState() {
     super.initState();
     _helper.getAll().then((data) {
       setState(() {
@@ -78,12 +78,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   _lista.removeAt(position);
                                   _lista.insert(position, editedAds);
                                   //filePersistence.saveData(_lista);
-                                  const snackBar = SnackBar(
-                                    content: Text('Anuncio Editado'),
-                                    backgroundColor: Colors.blue,
-                                  );
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(snackBar);
+                                  // const snackBar = SnackBar(
+                                  //   content: Text('Anuncio Editado'),
+                                  //   backgroundColor: Colors.blue,
+                                  // );
+                                  // ScaffoldMessenger.of(context)
+                                  //     .showSnackBar(snackBar);
                                 });
                               }
                             },
@@ -244,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const CadastroScreen()));
-            Ads? saveAds = await _helper.saveAds(newAds);
+            Ads? save = await _helper.save(newAds);
             setState(() {
               _lista.add(newAds);
               //filePersistence.saveData(_lista);

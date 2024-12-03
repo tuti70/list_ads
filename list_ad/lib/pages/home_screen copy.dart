@@ -202,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const CadastroScreen()));
-            Ads? saveAds = await _helper.saveAds(newAds);
+            Ads? save = await _helper.save(newAds);
             setState(() {
               _lista.add(newAds);
               //filePersistence.saveData(_lista);
