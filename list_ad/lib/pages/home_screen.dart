@@ -150,9 +150,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ads.image != null
                           ? Image.file(
                               ads.image!,
+                              opacity: ads.done
+                                  ? const AlwaysStoppedAnimation(1)
+                                  : const AlwaysStoppedAnimation(.3),
                               width: double
                                   .infinity, // Ocupar toda a largura disponível
-                              height: 200, // Ajustar para manter proporção 16:9
+                              height: 250, // Ajustar para manter proporção 16:9
                               fit: BoxFit.cover,
                             )
                           : const SizedBox(
@@ -196,38 +199,50 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
 
                     SizedBox(height: 4),
-                    // Preço
-                    Text(
-                      "Preço: R\$250",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 4),
+
                     // Tipo de frete
                     const Text(
                       "Frete Gratis",
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.blue,
+                        // decoration: ads.done
+                        //     ? TextDecoration.none
+                        //     : TextDecoration.lineThrough,
                       ),
                     ),
                     SizedBox(height: 8),
-                    // Botão de ação (Switch)
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Switch(
-                        value: ads.done,
-                        activeColor: const Color.fromARGB(255, 61, 255, 109),
-                        onChanged: (bool value) {
-                          setState(() {
-                            ads.done = !ads.done;
-                          }); // Adicionar lógica de ativar/desativar anúncio
-                        },
-                      ),
-                    ),
+                    Row(
+                      children: <Widget>[
+                        // Preço
+                        Expanded(
+                          child: Text(
+                            "Preço: R\$250",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Switch(
+                              value: ads.done,
+                              activeColor:
+                                  const Color.fromARGB(255, 61, 255, 109),
+                              onChanged: (bool value) {
+                                setState(() {
+                                  ads.done = !ads.done;
+                                }); // Adicionar lógica de ativar/desativar anúncio
+                              },
+                            ),
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
