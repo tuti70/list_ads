@@ -116,8 +116,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () async {
                               final Uri params = Uri(
                                 scheme: 'sms',
-                                path: '+55 64 8440-0620',
-                                queryParameters: {'body': 'Uma mensagem'},
+                                path: '+55648440-0620',
+                                queryParameters: {
+                                  "body": Uri.encodeComponent(
+                                      "Gostei do produto ${ads.titulo}")
+                                },
                                 // preciso adiconar avlor no BDA
                               );
 
@@ -195,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(height: 4),
                     // Preço
                     Text(
-                      "250",
+                      "Preço: R\$250",
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.green,

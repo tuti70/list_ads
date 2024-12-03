@@ -64,7 +64,7 @@ class AdHelper {
     return Ads.fromMap(returnedAds.first);
   }
 
-  // Atualizar um tarefa (todo)???
+  // Atualizar um tarefa
   Future<int?> editAds(Ads ads) async {
     Database? db = await DatabaseHelper().db;
     if (db == null) return null;
