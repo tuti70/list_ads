@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               if (result != null) {
                                 setState(() {
                                   _lista.removeAt(position);
-                                  //filePersistence.saveData(_lista);
+
                                   const snackBar = SnackBar(
                                     content:
                                         Text('Anuncio apagada com sucesso'),
