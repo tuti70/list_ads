@@ -16,6 +16,7 @@ class CadastroScreen extends StatefulWidget {
 class _CadastroScreen extends State<CadastroScreen> {
   final TextEditingController _tituloController = TextEditingController();
   final TextEditingController _textController = TextEditingController();
+  final TextEditingController _precoController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Ads? ads;
   File? _image;
@@ -27,6 +28,7 @@ class _CadastroScreen extends State<CadastroScreen> {
       setState(() {
         _tituloController.text = widget.ads!.titulo;
         _textController.text = widget.ads!.texto;
+        _precoController.text = widget.ads!.texto;
         _image = widget.ads!.image;
         ads = widget.ads;
       });
@@ -157,6 +159,38 @@ class _CadastroScreen extends State<CadastroScreen> {
                     ),
                   ),
                   Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 2.5, horizontal: 5),
+                    child: Card(
+                      margin: EdgeInsets.all(10),
+                      color: const Color.fromARGB(255, 73, 73, 73),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
+                        child: TextFormField(
+                          controller: _precoController,
+                          style: const TextStyle(fontSize: 18),
+                          decoration: const InputDecoration(
+                            labelText: "Preço",
+                            labelStyle: TextStyle(
+                              fontSize: 18,
+                              color: Color.fromARGB(255, 226, 225, 225),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Color.fromARGB(255, 226, 225, 225),
+                            )),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Prenchimento Obrigatório";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
                     margin: EdgeInsets.all(10),
                     padding: const EdgeInsets.symmetric(vertical: 6),
                     child: Row(
@@ -173,8 +207,11 @@ class _CadastroScreen extends State<CadastroScreen> {
                                 onPressed: () {
                                   FocusScope.of(context).unfocus();
                                   if (_formKey.currentState!.validate()) {
-                                    Ads newads = Ads(_tituloController.text,
-                                        _textController.text, _image);
+                                    Ads newads = Ads(
+                                        _tituloController.text,
+                                        _textController.text,
+                                        _precoController.text,
+                                        _image);
                                     Navigator.pop(context, newads);
                                   }
                                 },

@@ -4,15 +4,17 @@ class Ads {
   int? id;
   late String titulo;
   late String texto;
+  late String preco;
   bool done = true;
   File? image;
 
-  Ads(this.titulo, this.texto, this.image);
+  Ads(this.titulo, this.texto, this.preco, this.image);
 
   Ads.fromMap(Map map) {
     this.id = map['id'];
     this.titulo = map['titulo'];
     this.texto = map['texto'];
+    this.preco = map['preco']; // Adicionado
     this.done = map['done'] == 1 ? true : false; // SQL não salva booleano
     this.image = map['imagePath'] != '' ? File(map['imagePath']) : null;
   }
@@ -22,6 +24,7 @@ class Ads {
       'id': this.id,
       'titulo': this.titulo,
       'texto': this.texto,
+      'preco': this.preco, // Adicionado
       'done': this.done,
       'imagePath': this.image != null ? this.image!.path : ''
     };
@@ -30,7 +33,7 @@ class Ads {
 
   @override
   String toString() {
-    return "Task(id: $id, titulo: $titulo, texto: $texto, done: $done, image: $image)";
+    return "Ads(id: $id, titulo: $titulo, texto: $texto, preco: $preco, done: $done, image: $image)";
   }
 }
 

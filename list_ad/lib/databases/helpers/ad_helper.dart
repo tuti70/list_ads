@@ -7,12 +7,17 @@ class AdHelper {
   static final String idColumn = 'id';
   static final String tituloColumn = 'titulo';
   static final String textColumn = 'texto';
+  static final String precoColumn = 'preco'; // Adicionado
   static final String doneColumn = 'done';
   static final String imagePathColumn = 'imagePath';
 
   static String get createScript {
     return "CREATE TABLE ${tableName} ($idColumn INTEGER PRIMARY KEY AUTOINCREMENT, " +
-        "$tituloColumn TEXT NOT NULL,$textColumn TEXT NOT NULL, $doneColumn INTEGER NOT NULL, $imagePathColumn STRING);";
+        "$tituloColumn TEXT NOT NULL, " +
+        "$textColumn TEXT NOT NULL, " +
+        "$precoColumn REAL NOT NULL, " + // Adicionado
+        "$doneColumn INTEGER NOT NULL, " +
+        "$imagePathColumn STRING);";
   }
 
   //Inserção de um registro
@@ -34,6 +39,7 @@ class AdHelper {
       idColumn,
       tituloColumn,
       textColumn,
+      precoColumn, // Adicionado
       doneColumn,
       imagePathColumn
     ]);
@@ -55,6 +61,7 @@ class AdHelper {
           idColumn,
           tituloColumn,
           textColumn,
+          precoColumn, // Adicionado
           doneColumn,
           imagePathColumn
         ],
