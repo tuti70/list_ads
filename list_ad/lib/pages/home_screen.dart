@@ -217,11 +217,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         // Preço
                         Expanded(
                           child: Text(
-                            "Preço: R\$250",
+                            _lista[position].preco,
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.green,
+                              color: ads.done ? Colors.green : Colors.grey,
                               fontWeight: FontWeight.bold,
+                              decoration: ads.done
+                                  ? TextDecoration.none
+                                  : TextDecoration.lineThrough,
                             ),
                           ),
                         ),
