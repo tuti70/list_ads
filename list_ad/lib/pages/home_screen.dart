@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             title: const Text("Editar"),
                             onTap: () async {
                               Navigator.pop(context);
-                              Ads editedAds = await Navigator.push(
+                              Ads editAds = await Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
@@ -76,14 +76,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               if (result != null) {
                                 setState(() {
                                   _lista.removeAt(position);
-                                  _lista.insert(position, editedAds);
-                                  //filePersistence.saveData(_lista);
-                                  // const snackBar = SnackBar(
-                                  //   content: Text('Anuncio Editado'),
-                                  //   backgroundColor: Colors.blue,
-                                  // );
-                                  // ScaffoldMessenger.of(context)
-                                  //     .showSnackBar(snackBar);
+                                  _lista.insert(position, editAds);
+                                  const snackBar = SnackBar(
+                                    content: Text('Anuncio Editado'),
+                                    backgroundColor: Colors.blue,
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
                                 });
                               }
                             },
@@ -93,8 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             title: const Text("Apagar"),
                             onTap: () async {
                               Navigator.pop(context);
-                              var result = await _helper
-                                  .deleteAds(ads); // Added closing parenthesis
+                              var result = await _helper.deleteAds(ads);
                               if (result != null) {
                                 setState(() {
                                   _lista.removeAt(position);
@@ -186,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     // Descrição
                     Text(
-                      _lista[position].texto,
+                      _lista[position].text,
                       style: TextStyle(
                         fontSize: 12,
                         color: ads.done
@@ -217,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         // Preço
                         Expanded(
                           child: Text(
-                            _lista[position].preco,
+                            _lista[position].preco as String,
                             style: TextStyle(
                               fontSize: 18,
                               color: ads.done ? Colors.green : Colors.grey,
@@ -262,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const CadastroScreen()));
-            Ads? save = await _helper.save(newAds);
+            Ads? save = await _helper.saveAds(newAds);
             setState(() {
               _lista.add(newAds);
               //filePersistence.saveData(_lista);

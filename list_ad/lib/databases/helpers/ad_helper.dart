@@ -6,7 +6,7 @@ class AdHelper {
   static final String tableName = 'ads';
   static final String idColumn = 'id';
   static final String tituloColumn = 'titulo';
-  static final String textColumn = 'texto';
+  static final String textColumn = 'text';
   static final String precoColumn = 'preco'; // Adicionado
   static final String doneColumn = 'done';
   static final String imagePathColumn = 'imagePath';
@@ -21,7 +21,7 @@ class AdHelper {
   }
 
   //Inserção de um registro
-  Future<Ads?> save(Ads ads) async {
+  Future<Ads?> saveAds(Ads ads) async {
     Database? db = await DatabaseHelper().db;
     if (db != null) {
       ads.id = await db.insert(tableName, ads.toMap());

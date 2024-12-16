@@ -26,10 +26,7 @@ class DatabaseHelper {
 
     // try {
     return _db = await openDatabase(path,
-        version: 4, onCreate: _onCreateDB, onUpgrade: _onUpgradeDB);
-    // } catch (e) {
-    //   print(e);
-    // }
+        version: 25, onCreate: _onCreateDB, onUpgrade: _onUpgradeDB);
   }
 
   Future _onCreateDB(Database db, int newVersion) async {
